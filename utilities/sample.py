@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-from snort_rule_gen.src import model
+from snort_rule_gen.utilities import model
 
 
 def top_k_logits(logits, k):

@@ -21,9 +21,9 @@ try:
 except:
     pass
 
-from src import model, sample, encoder, memory_saving_gradients
-from src.load_dataset import load_dataset, Sampler
-from src.accumulate import AccumulatingOptimizer
+from snort_rule_gen.src import model, sample, encoder, memory_saving_gradients
+from snort_rule_gen.src.load_dataset import load_dataset, Sampler
+from snort_rule_gen.src.accumulate import AccumulatingOptimizer
 
 assert tf.__version__ < '2.0.0', "currently does not support " \
     "TensorFlow 2.0. You'll need to use a virtualenv or cloud computer which " \

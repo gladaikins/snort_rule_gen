@@ -1,1 +1,1 @@
-# snort-rule-gen
+# snort-rule-generator

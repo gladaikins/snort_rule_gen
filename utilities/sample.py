@@ -61,9 +61,6 @@ def sample_sequence(*, hparams, length, start_token=None,
         }
 
     with tf.compat.v1.name_scope('sample_sequence'):
-        # Don't feed the last context token -- leave that to the loop below
-        # TODO: Would be slightly faster if we called step on the entire context,
-        # rather than leaving the last token transformer calculation to the while loop.
         context_output = step(hparams, context[:, :-1])
 
         def body(past, prev, output):

@@ -34,22 +34,7 @@ def gradients(ys, xs, grad_ys=None, checkpoints='collection', **kwargs):
     Authors: Tim Salimans & Yaroslav Bulatov
 
     memory efficient gradient implementation inspired by "Training Deep Nets with Sublinear Memory Cost"
-    by Chen et al. 2016 (https://arxiv.org/abs/1604.06174)
-
-    ys,xs,grad_ys,kwargs are the arguments to standard tensorflow tf.gradients
-    (https://www.tensorflow.org/versions/r0.12/api_docs/python/train.html#gradients)
-
-    'checkpoints' can either be
-        - a list consisting of tensors from the forward pass of the neural net
-          that we should re-use when calculating the gradients in the backward pass
-          all other tensors that do not appear in this list will be re-computed
-        - a string specifying how this list should be determined. currently we support
-            - 'speed':  checkpoint all outputs of convolutions and matmuls. these ops are usually the most expensive,
-                        so checkpointing them maximizes the running speed
-                        (this is a good option if nonlinearities, concats, batchnorms, etc are taking up a lot of memory)
-            - 'memory': try to minimize the memory usage
-                        (currently using a very simple strategy that identifies a number of bottleneck tensors in the graph to checkpoint)
-            - 'collection': look for a tensorflow collection named 'checkpoints', which holds the tensors to checkpoint
+    by Chen et al. 
     '''
 
     #    print("Calling memsaving gradients with", checkpoints)

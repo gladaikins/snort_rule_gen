@@ -1,1 +1,1 @@
-from .gpt_2 import *
+from .srg import *

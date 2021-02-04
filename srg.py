@@ -14,6 +14,7 @@ import time
 from datetime import datetime
 import csv
 import argparse
+import wandb
 
 # if in Google Colaboratory
 try:
@@ -283,7 +284,7 @@ def finetune(sess,
                 all_text.append(text)
                 index += 1
         print(text)
-        wandb.log({"Output": text},commit=False)
+        
         maketree(os.path.join(SAMPLE_DIR, run_name))
         with open(
                 os.path.join(SAMPLE_DIR, run_name,
@@ -339,6 +340,8 @@ def finetune(sess,
                         time=time.time() - start_time,
                         loss=v_loss,
                         avg=avg_loss[0] / avg_loss[1]))
+                wandb.log({"Loss": v_loss},commit=False)
+                wandb.log({"Average Loss": avg_loss[0] / avg_loss[1]},commit=False)
 
             counter += 1
     except KeyboardInterrupt:

@@ -340,8 +340,8 @@ def finetune(sess,
                         time=time.time() - start_time,
                         loss=v_loss,
                         avg=avg_loss[0] / avg_loss[1]))
-                wandb.log({"Loss": v_loss},commit=False)
-                wandb.log({"Average Loss": avg_loss[0] / avg_loss[1]},commit=False)
+                wandb.log({"Loss": v_loss})
+                wandb.log({"Average Loss": avg_loss[0] / avg_loss[1]})
 
             counter += 1
     except KeyboardInterrupt:

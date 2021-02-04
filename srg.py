@@ -283,6 +283,7 @@ def finetune(sess,
                 all_text.append(text)
                 index += 1
         print(text)
+        wandb.log({"Output": text},commit=False)
         maketree(os.path.join(SAMPLE_DIR, run_name))
         with open(
                 os.path.join(SAMPLE_DIR, run_name,
